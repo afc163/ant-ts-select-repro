@@ -1,0 +1,7 @@
+FROM node:11.8-alpine as yarn-build
+
+WORKDIR /usr
+COPY ./package.json ./yarn.lock ./tsconfig.json ./config-overrides.js /usr/
+RUN yarn --network-timeout 120000
+
+CMD ["yarn", "start"]
